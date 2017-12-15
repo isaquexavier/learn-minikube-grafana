@@ -92,12 +92,25 @@ If you want more details about cAdvisor and Heapster you may access the followin
      ```
   
   2. If you list the addons again you'll see Heapster enabled
-  3. If you list the services for minikube, you'll Grafana listening on por 30002, you may access from the URL [```http://{MINIKUBE-IP}:30002```](http://{MINIKUBE-IP}:30002) 
-  4. If you list the services for minikube, you'll Kubernetes Dashboard listening on por 30000, you may access from the URL [```http://{MINIKUBE-IP}:30000```](http://{MINIKUBE-IP}:30000) 
+  3. You can list the services for minikube using the following command
+    ```
+    $﻿minikube service list
+     |-------------|----------------------|------------------------|
+     |  NAMESPACE  |         NAME         |          URL           |
+     |-------------|----------------------|------------------------|
+     | default     | kubernetes           | No node port           |
+     | kube-system | heapster             | No node port           |
+     | kube-system | kube-dns             | No node port           |
+     | kube-system | kubernetes-dashboard | http://127.0.0.1:30000 |
+     | kube-system | monitoring-grafana   | http://127.0.0.1:30002 |
+     | kube-system | monitoring-influxdb  | No node port           |
+     |-------------|----------------------|------------------------|
 
-## Grafana
-
-### Dashboards
+    ```  
+  5. Once you access Grafana ([```http://{MINIKUBE-IP}:30002```](http://{MINIKUBE-IP}:30002)) you may check the defaults Dashboards for POD monitoring
+    ![grafana-dashboard](/grafana-dashboard.jpeg?raw=true)
+  6. You may access Kubernetes Dashboard ([```http://{MINIKUBE-IP}:30000```](http://{MINIKUBE-IP}:30000)) and take a look through all the resources and information
+    ![kubernetes-dashboard](/kubernetes-dashboard.jpeg?raw=true)
 
 ## References
 
@@ -109,4 +122,5 @@ Git repo for [minikube](https://github.com/kubernetes/minikube#what-is-minikube)
 
 Installing [Docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04) on Ubuntu.
 
+You may find the official Grafana documentation [here](https://grafana.com/)
 
