@@ -51,11 +51,16 @@ For our tutorial we decided to use ["none"](https://github.com/kubernetes/miniku
     kubectl: Correctly Configured: pointing to minikube-vm at 127.0.0.1
     ```
 
+- You may check the IP address for minikube using the following command:
+    ```
+    $﻿minikube ip
+    ```
+
 ### Minikube Add-ons
 *"Minikube has a set of built in [addons](https://github.com/kubernetes/minikube/blob/master/docs/addons.md#add-ons) that can be used enabled, disabled, and opened inside of the local k8s environment."*
-For sake of simplicity we'll use the add-on for Heapster and Grafana.
+For sake of simplicity we'll use the addon for Heapster and Grafana.
 
-You may list the add-ons and their status using the following command:
+You may list the addons and their status using the following command:
 
 ```
 $ minikube addons list
@@ -82,10 +87,10 @@ $ minikube addons list
 
 If you want more details about cAdvisor and Heapster you may access the following article. *"[Resource Usage Monitoring in Kubernetes](http://blog.kubernetes.io/2015/05/resource-usage-monitoring-kubernetes.html)"*
 
-- Once we have minikube in place let's move on and "install", better saying enable the add-on (Heapster), which is responsible for get resource usage metrics in partnership with cAdvisor.
+- Once we have minikube in place let's move on and "install", better saying enable the addon (Heapster), which is responsible for get resource usage metrics in partnership with cAdvisor.
 
-- In order to enable Heapster add-on let's follow the steps below
-  1. List all minikube add-on - run the following command:
+- In order to enable Heapster addon let's follow the steps below
+  1. List all minikube addon - run the following command:
      ```
      ﻿$ minikube addons enable heapster
      heapster was successfully enabled
