@@ -2,7 +2,7 @@
 A straightforward tutorial regarding monitoring resource usage in [Kubernetes](https://kubernetes.io) (minikube) of containers, pods, services, and whole clusters using cAdvisor, Heapster and Grafana.
 
 ## Target description
-**Note:** this tutorial should be used locally for testing purposes. The intention is not deploying on Production, but only for local tests tasks. 
+**Note:** this tutorial should be used locally for testing purposes. The intention is not deploying on Production, but only for local tests tasks.
 
 This tutorial is addressed for those who are using Kubernetes as container orchestrator for a containerized application environment.
 
@@ -11,10 +11,10 @@ The main goal here is to show how can we monitor resources from a Cluster in Kub
 - Minikube: in short words  is a tool that makes it easy to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster inside a VM on your laptop for users looking to try out Kubernetes or develop with it day-to-day.
 
 - A very nice definition regarding *"Resource Usage Monitoring in Kubernetes"*:
-   
+
    *Understanding how an application behaves when deployed is crucial to scaling the application and providing a reliable service. In a Kubernetes cluster, application performance can be examined at many different levels: containers, pods, services, and whole clusters. As part of Kubernetes we want to provide users with detailed resource usage information about their running applications at all these levels. This will give users deep insights into how their applications are performing and where possible application bottlenecks may be found. In comes Heapster, a project meant to provide a base monitoring platform on Kubernetes.*
-   
-   Resource [Kubernetes blog](http://blog.kubernetes.io/2015/05/resource-usage-monitoring-kubernetes.html) 
+
+   Resource [Kubernetes blog](http://blog.kubernetes.io/2015/05/resource-usage-monitoring-kubernetes.html)
 
 
 ### Requirements
@@ -22,13 +22,18 @@ The main goal here is to show how can we monitor resources from a Cluster in Kub
 - For this tutorial, you should have a minimum knowledge regarding containerized applications environments, Kubernetes, and tools for application monitoring ion general.
 - Operation System used: Ubuntu 16.04.3 LTS running on a VirtualBox VM﻿Version 5.2.2 r119230
 - The VT-x or AMD-v virtualization must be enabled in your computer’s BIOS.
-  
+- Vagrant (https://www.vagrantup.com/downloads.html)
+
 
 ## Minikube
 
 - **Note:** *minikube requires a [Hypervisor](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-a-hypervisor) installation in order to work.*
 
     As we'll not use an ordinary Hypervisor, we should install [Docker](https://www.docker.com/what-docker), for that we followed the tutorial from [DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04) which works fine for ours purposes. *You must follow the guide until the end of the second step.*
+
+- Download and install Vagrant https://www.vagrantup.com/downloads.html (https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.dmg)
+- change into git root directory and run vagrant up
+- change into the VM with vagrant ssh
 
 - The Minikube installation is very straightforward you may use the [Official Reference](https://kubernetes.io/docs/tasks/tools/install-minikube)  
 For our tutorial we decided to use ["none"](https://github.com/kubernetes/minikube#requirements) option for the driver. It's not very recommended, but decided no to not nest Virtual Machines.
@@ -37,12 +42,12 @@ For our tutorial we decided to use ["none"](https://github.com/kubernetes/miniku
     ```
     $ minikube start --vm-driver=none
     ```
-    
+
     **Note:** Because we are using "none" option for driver, a warning will be presented at the end of starting process.
     It's up to you to take in consideration or not.
-    
+
     **Note:** In addition, due to the same reason above, in order to prevent you have to type ```sudo``` for all commands you must properly assign the right permissions to the installation resources for ```kubectl``` and ```minikube```.
- 
+
 - Finally check whether everything is running properly or not
     ```
     $ minikube status
@@ -95,7 +100,7 @@ If you want more details about cAdvisor and Heapster you may access the followin
      ﻿$ minikube addons enable heapster
      heapster was successfully enabled
      ```
-  
+
   2. If you list the addons again you'll see Heapster enabled
   3. You can list the services for minikube using the following command
     ```
@@ -128,4 +133,3 @@ Git repo for [minikube](https://github.com/kubernetes/minikube#what-is-minikube)
 Installing [Docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04) on Ubuntu.
 
 You may find the official Grafana documentation [here](https://grafana.com/)
-
