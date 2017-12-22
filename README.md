@@ -20,20 +20,18 @@ The main goal here is to show how can we monitor resources from a Cluster in Kub
 ### Requirements
 
 - For this tutorial, you should have a minimum knowledge regarding containerized applications environments, Kubernetes, and tools for application monitoring ion general.
-- Operation System used: Ubuntu 16.04.3 LTS running on a VirtualBox VM﻿Version 5.2.2 r119230
+- VirtualBox (Version 5.2.2 r119230) 
 - The VT-x or AMD-v virtualization must be enabled in your computer’s BIOS.
-- Vagrant (https://www.vagrantup.com/downloads.html)
+- Manual installation: a Virtual machine - Ubuntu 16.04.3 LTS
+- Automated Installation: Vagrant (https://www.vagrantup.com/downloads.html)
 
+## Manual Installation
 
-## Minikube
+### Minikube
 
 - **Note:** *minikube requires a [Hypervisor](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-a-hypervisor) installation in order to work.*
 
     As we'll not use an ordinary Hypervisor, we should install [Docker](https://www.docker.com/what-docker), for that we followed the tutorial from [DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04) which works fine for ours purposes. *You must follow the guide until the end of the second step.*
-
-- Download and install Vagrant https://www.vagrantup.com/downloads.html (https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.dmg)
-- change into git root directory and run vagrant up
-- change into the VM with vagrant ssh
 
 - The Minikube installation is very straightforward you may use the [Official Reference](https://kubernetes.io/docs/tasks/tools/install-minikube)  
 For our tutorial we decided to use ["none"](https://github.com/kubernetes/minikube#requirements) option for the driver. It's not very recommended, but decided no to not nest Virtual Machines.
@@ -82,7 +80,7 @@ $ minikube addons list
 - default-storageclass: enabled
 ```
 
-## Heapster and cAdvisor
+### Heapster and cAdvisor
 
 *"Heapster is a cluster-wide aggregator of monitoring and event data. It currently supports Kubernetes natively and works on all Kubernetes setups. Heapster runs as a pod in the cluster, similar to how any Kubernetes application would run. The Heapster pod discovers all nodes in the cluster and queries usage information from the nodes’ Kubelets, the on-machine Kubernetes agent. The Kubelet itself fetches the data from cAdvisor. Heapster groups the information by pod along with the relevant labels. This data is then pushed to a configurable backend for storage and visualization. Currently supported backends include InfluxDB (with Grafana for visualization), Google Cloud Monitoring and many others described in more details here. The overall architecture of the service can be seen below."*
 
@@ -122,7 +120,24 @@ If you want more details about cAdvisor and Heapster you may access the followin
   6. You may access Kubernetes Dashboard ([```http://{MINIKUBE-IP}:30000```](http://{MINIKUBE-IP}:30000)) and take a look through all the resources and information
     ![kubernetes-dashboard](/kubernetes-dashboard.jpeg?raw=true)
 
-## References
+### Automated Installation
+
+## Vagrant
+
+- Download and install Vagrant from [here](https://www.vagrantup.com/downloads.html) 
+- change into git root directory and run vagrant up
+- change into the VM with vagrant ssh
+
+## Script
+
+- To install and configure the Virtual Machine run the command: ```$ vagrant up```
+- Login in the Virtual Machine (after the installation has been completed)
+  - Credentials can be found into the file ```~/.vagrant.d/boxes/ubuntu-VAGRANTSLASH-xenial64/{vagrant-version}/virtualbox/Vagrantfile```
+  - To start the Linux UI run the command: ```startx``` 
+
+- **Note**: further improvements would be set a default password for the user and configure the Linux GUI to start by default.
+
+### References
 
 Official reference from [Kubernetes](https://kubernetes.io)
 
