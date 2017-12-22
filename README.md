@@ -120,15 +120,15 @@ If you want more details about cAdvisor and Heapster you may access the followin
   6. You may access Kubernetes Dashboard ([```http://{MINIKUBE-IP}:30000```](http://{MINIKUBE-IP}:30000)) and take a look through all the resources and information
     ![kubernetes-dashboard](/kubernetes-dashboard.jpeg?raw=true)
 
-### Automated Installation
+## Automated Installation
 
-## Vagrant
+### Vagrant
 
 - Download and install Vagrant from [here](https://www.vagrantup.com/downloads.html) 
 - change into git root directory and run vagrant up
 - change into the VM with vagrant ssh
 
-## Script
+### Script
 
 - To install and configure the Virtual Machine run the command: ```$ vagrant up```
 - Login in the Virtual Machine (after the installation has been completed)
